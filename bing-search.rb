@@ -3,13 +3,14 @@ require 'rest-client'
 
 class BingSearch
   def initialize(url, query)
-    @data = RestClient.get(url, {:params => {:q => query}})
+    @data = RestClient.get(url, {params: {q: query}})
   end
 
   def print_data
+    puts "\nServer response:\n#{@data.code}"
     puts "\nHeaders:\n#{@data.headers}"
     puts "\nCookies:\n#{@data.cookies}"
-    puts "\nBody:\n#{@data.body}"
+    # puts "\nBody:\n#{@data.body}"
   end
 
   def print_links
@@ -23,8 +24,9 @@ class BingSearch
   end
 end
 
-url = 'https://www.bing.com/search'
-query = 'spaceship'
+url = 'https://www.bing.com/'
+query = 'vscode'
 search = BingSearch.new(url, query)
 
 search.print_links
+# search.print_data
